@@ -16,28 +16,21 @@ describe('Functions | Arrow functions', () => {
         expect(five()).to.equal(5);
     });
     it('can be used with array methods', () => {
-
         let arr = [1, 2, 3, 4, 5];
         let timesTwo = item => item * 2;
-
         let newArr = arr.map(timesTwo);
-
         expect(newArr).to.have.members([2, 4, 6, 8, 10]);
     });
 
     it('function does not lexically bind to this', function (done) {
-
         this.name = 'John';
-
         setTimeout(function () {
             expect(this.name).to.equal(undefined);
             done();
         }, 15);
-
     });
 
     it('arrow function does lexically bind to this', function (done) {
-
         this.name = 'John';
         setTimeout(() => {
             expect(this.name).to.equal('John');

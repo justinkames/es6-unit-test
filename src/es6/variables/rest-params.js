@@ -12,5 +12,4 @@ describe('Variables | Rest params', () => {
         };
         expect(doSomething(1, 2, 3)).to.equal(6);
     });
-    
 });

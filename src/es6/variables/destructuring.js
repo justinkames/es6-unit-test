@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-describe('Variables | Destructring', () => {
+describe('Variables | Destructuring', () => {
 
     it('should destructure arrays', () => {
         let x = 2;

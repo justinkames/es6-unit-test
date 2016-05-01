@@ -19,6 +19,5 @@ describe('Generators | example', () => {
         }
 
         expect(sum).to.equal(6);
-
     });
 });
