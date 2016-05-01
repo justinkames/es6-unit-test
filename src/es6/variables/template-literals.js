@@ -1,38 +1,38 @@
+/* global it, describe */
 import {expect} from 'chai';
 
 describe('Variables | Template literals', () => {
+	it('should append strings', function() {
+		let concat = function(a, b, c) {
+			return `${a}${b}${c}`;
+		};
+		expect(concat('a', 'b', 'c')).to.equal('abc');
+	});
 
-    it('should append strings', function () {
-        let concat = function (a, b, c) {
-            return `${a}${b}${c}`;
-        };
-        expect(concat('a', 'b', 'c')).to.equal('abc');
-    });
+	it('should process expressions', function() {
+		let concat = function(a, b, c) {
+			return `${a + b + c}`;
+		};
+		expect(concat(1, 2, 3)).to.equal('6');
+	});
 
-    it('should process expressions', function () {
-        let concat = function (a, b, c) {
-            return `${a + b + c}`;
-        };
-        expect(concat(1, 2, 3)).to.equal('6');
-    });
+	it('can use custom tags', () => {
+		let upper = (strings, ...values) => {
+			let result = '';
 
-    it('can use custom tags', () => {
-        let upper = (strings, ...values) => {
-            let result = '';
+			strings.forEach(string => {
+				result += string;
+			});
 
-            strings.forEach(string => {
-                result += string;
-            });
+			values.forEach(value => {
+				result += value;
+			});
 
-            values.forEach(value => {
-                result += value;
-            });
+			return result.toUpperCase();
+		};
 
-            return result.toUpperCase();
-        };
-
-        let a = 5;
-        let result = upper `hello ${a + a} hello ${a}`;
-        expect(result).to.equal('HELLO  HELLO 105');
-    });
+		let a = 5;
+		let result = upper `hello ${a + a} hello ${a}`;
+		expect(result).to.equal('HELLO  HELLO 105');
+	});
 });

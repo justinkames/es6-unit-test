@@ -1,70 +1,66 @@
+/* global it, describe */
 import {expect} from 'chai';
 
 describe('Classes | Class initialization', () => {
+	it('class versus prototype is similar', () => {
+		var VehicleA = function(color, maxSpeed) {
+			this.color = color;
+			this.maxSpeed = maxSpeed;
+		};
 
-    it('class versus prototype is similar', () => {
+		VehicleA.prototype = {
+			getColor: function() {
+				return this.color;
+			}
+		};
 
-        var VehicleA = function (color, maxSpeed) {
-            this.color = color;
-            this.maxSpeed = maxSpeed;
-        };
+		class VehicleB {
 
-        VehicleA.prototype = {
-            getColor: function () {
-                return this.color;
-            }
-        };
+			constructor(color, maxSpeed) {
+				this._color = (color);
+				this.maxSpeed = maxSpeed;
+			}
 
-        class VehicleB {
+			set color(color) {
+				this._color = color;
+			}
 
-            constructor(color, maxSpeed) {
-                this._color = (color);
-                this.maxSpeed = maxSpeed;
-            }
+			get color() {
+				return this._color;
+			}
+		}
 
-            set color(color) {
-                this._color = color;
-            }
+		let vehicleA = new VehicleA('red', 50);
+		let vehicleB = new VehicleB('red', 50);
 
-            get color() {
-                return this._color;
-            }
-        }
+		expect(vehicleA.getColor()).to.equal('red');
+		expect(vehicleB.color).to.equal('red');
+		expect(vehicleA.getColor()).to.equal(vehicleB.color);
+	});
 
-        let vehicleA = new VehicleA('red', 50);
-        let vehicleB = new VehicleB('red', 50);
+	it('inheritance should work ', () => {
+		class Person {
+			constructor(name) {
+				this.name = name;
+			}
 
-        expect(vehicleA.getColor()).to.equal('red');
-        expect(vehicleB.color).to.equal('red');
-        expect(vehicleA.getColor()).to.equal(vehicleB.color);
-    });
+			get name() {
+				return this._name;
+			}
 
+			set name(name) {
+				this._name = name;
+			}
+		}
 
-    it('inheritance should work ', () => {
+		class Employee extends Person {
+			work() {
+				return `${this.name}, I am working`;
+			}
+		}
 
-        class Person {
-            constructor(name) {
-                this.name = name;
-            }
-
-            get name() {
-                return this._name;
-            }
-
-            set name(name) {
-                this._name = name;
-            }
-        }
-
-        class Employee extends Person {
-            work() {
-                return `${this.name}, I am working`;
-            }
-        }
-
-        expect(new Person('john').name).to.equal('john');
-        expect(new Employee('jane').name).to.equal('jane');
-        expect(new Employee('jane').work()).to.equal('jane, I am working');
-    });
-
+		expect(new Person('john').name).to.equal('john');
+		expect(new Employee('jane').name).to.equal('jane');
+		expect(new Employee('jane').work()).to.equal('jane, I am working');
+	});
 });

@@ -1,3 +1,4 @@
+/* global it, describe */
 import {expect} from 'chai';
 
 describe('Variables | Destructuring', () => {
