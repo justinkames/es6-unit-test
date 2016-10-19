@@ -1,11 +1,9 @@
-# es6-unit-test
-
-ES6 Features united tested with Mocha.
+#ES6 features tested with Mocha.
 
 ### Install
 
-- `$ npm i`
+- `$ yarn` or `$ npm i`
 
-### Run
+### Run tests ( + watch for changes )
 
-- `$ gulp watch-mocha` ( run the tests + live-reloading )
+- `$ gulp watch-mocha`
