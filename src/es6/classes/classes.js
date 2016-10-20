@@ -2,11 +2,12 @@
 import {expect} from 'chai';
 
 describe('Classes | Class initialization', () => {
+
 	it('class versus prototype is similar', () => {
 		var VehicleA = function(color, maxSpeed) {
 			this.color = color;
 			this.maxSpeed = maxSpeed;
-		};
+		}; 
 
 		VehicleA.prototype = {
 			getColor: function() {

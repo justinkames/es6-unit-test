@@ -2,7 +2,7 @@
 import {expect} from 'chai';
 
 describe('Loops | For of', () => {
-	it('for of has concise syntax and does the same for iterator', () => {
+	it('for of has concise syntax and does the same as iterator', () => {
 		let sum = 0;
 		let a = [1, 2, 3, 4];
 
